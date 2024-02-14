@@ -1,3 +1,4 @@
+import path from "path";                        //for deployment
 import express, { application } from "express";
 import dotenv from "dotenv";
 import cookieParser from "cookie-parser";       //for verifying cookies
@@ -14,10 +15,12 @@ import { app, server } from "./socket/socket.js";
 // const app = express();           -> not needed when using socket
 const PORT = process.env.PORT || 5000;
 
+const __dirname = path.resolve();
+
 dotenv.config();
 
 //middleware
-app.use(express.json());                    //to parse incoming req with JSON payloads(from req.body)
+app.use(express.json());                        //to parse incoming req with JSON payloads(from req.body)
 app.use(cookieParser());
 
 // we can use middleware for clean coding
@@ -26,7 +29,16 @@ app.use("/api/messages", messageRoutes)
 app.use("/api/users", userRoutes)
 
 
-//route
+    //used to serve static file
+app.use(express.static(path.join(__dirname, "/frontend/dist")))
+        //file is saved in 'dist' for better optimization
+
+
+app.get("*",(req, res) => {
+    res.sendFile(path.join(__dirname,"frontend", "dist", "index.html"));
+})
+
+
 // app.get("/", (req, res) =>{
 //     //root route http://localhost:5000/
 //     res.send("Hello World!!");
