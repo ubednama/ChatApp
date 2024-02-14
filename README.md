@@ -14,7 +14,7 @@
 Check App [here](https://chat-app-uwfk.onrender.com/)
 
 
-Some Features:
+## Some Features:
 
 -   Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
 -   Authentication && Authorization with JWT
