@@ -2,10 +2,8 @@
 
 ![Demo App](https://github.com/ubednama/chat-app/assets/61332446/473c740f-fe2a-4072-bd17-4923b55454cf)
 <br>
-<p align="center">
-  <img src="https://github.com/ubednama/chat-app/assets/61332446/3f093f38-cbed-4806-8bd8-d140b3866fa3" alt="Sign Up" style="width:50%; display: inline-block;"/>
-  <img src="https://github.com/ubednama/chat-app/assets/61332446/f69e8356-caa7-434a-bff6-80830bd4d2a2" alt="Login" style="width:50%; display: inline-block;"/>
-</p>
+<img src="https://github.com/ubednama/chat-app/assets/61332446/3f093f38-cbed-4806-8bd8-d140b3866fa3" alt="Sign Up" style="width:50%;"/><img src="https://github.com/ubednama/chat-app/assets/61332446/f69e8356-caa7-434a-bff6-80830bd4d2a2" alt="Login" style="width:50%;"/>
+
 
 
 ##
