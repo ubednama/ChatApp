@@ -5,7 +5,7 @@ import generateTokenAndSetCookie from "../utils/generateToken.js";
 
 export const signup = async (req, res) =>{
     try {
-        const {fullname, username, password, confirmPassword, gender } = req.body;
+        const {fullName, username, password, confirmPassword, gender } = req.body;
 
         //to match password
         if(password !== confirmPassword) {
@@ -28,7 +28,7 @@ export const signup = async (req, res) =>{
         const girlProfilePic = `https://avatar.iran.liara.run/public/girl?username=${username}`
 
         const newUser = new User({
-            fullName: fullname,                 //we are getting fullname which we will send to mongoDB as fullName
+            fullName,                 //we are getting fullname which we will send to mongoDB as fullName -> fullName: fullname (had to change it later for frontend)
             username,
             password: hashedPassword ,
             gender,
