@@ -1,10 +1,9 @@
-# MERN Stack Project: Build and Deploy a Real Time Chat App | JWT, Socket.io
+# MERN Stack Project: Build and Deploy a Real-Time Chat App | JWT, Socket.io
 
 ![Demo App](https://github.com/ubednama/chat-app/assets/61332446/473c740f-fe2a-4072-bd17-4923b55454cf)
 <br>
-![SignUp page](https://github.com/ubednama/chat-app/assets/61332446/9af10815-5d19-4f36-9934-eb19fe8bf490)
-
-![Login page](https://github.com/ubednama/chat-app/assets/61332446/ccf9750a-cfec-41b7-b962-aac5e85b9672)
+<img src="https://github.com/ubednama/chat-app/assets/61332446/3f093f38-cbed-4806-8bd8-d140b3866fa3" alt="Sign Up" width="500"/>
+<img src="https://github.com/ubednama/chat-app/assets/61332446/f69e8356-caa7-434a-bff6-80830bd4d2a2" alt="Login" width="500"/>
 
 
 ##
