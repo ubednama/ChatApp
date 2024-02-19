@@ -1,4 +1,4 @@
-import { useEffect } from "react";
+import { useEffect, useState } from "react";
 
 import { useSocketContext } from "../context/SocketContext";
 import useConversation from "../zustand/useConversation";
@@ -17,7 +17,8 @@ const useListenMessages = () => {
 			setMessages([...messages, newMessage]);
 		});
 
-		return () => socket?.off("newMessage"); //this make sures that above part is only ran once
+		return () => socket?.off("newMessage"); 	//this make sures that above part is only ran once
 	}, [socket, setMessages, messages]);
+
 };
 export default useListenMessages;

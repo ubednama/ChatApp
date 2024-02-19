@@ -1,7 +1,9 @@
 import React, { useState } from 'react'
+import {Box, Flex, Text} from '@chakra-ui/react'
 import { useAuthContext } from '../../context/AuthContext'
 import useConversation from '../../zustand/useConversation';
 import { extractTime } from '../../utils/extractTIme';
+import {BsCheck2All} from "react-icons/bs"
 
 const Message = ({message}) => {
   const {authUser} = useAuthContext();
@@ -20,10 +22,17 @@ const Message = ({message}) => {
                 <img alt="profile" src={profilePic} />
             </div>
         </div>
-        <div className={`chat-bubble text-white ${bubbleBgColor} ${shakeClass}`}>
-            {message.message}
+        <div className={` max-w-3/4 chat-bubble text-white ${bubbleBgColor} ${shakeClass} `}>
+        {/* <p className='overflow-wrap break-words'>{`${message.message}`}</p>
+          {chatClassName === 'chat-end' && (
+            <div className="flex items-end">
+              <BsCheck2All size={16} />
+            </div>
+          )} */}
+            <p className=' overflow-wrap break-words '>{`${message.message}`} {chatClassName === 'chat-end' ? <BsCheck2All size={16} className="absolute right-2 bottom-0.5"/> : ''}</p>
         </div>
-        <div className='chat-footer opacity-50 text-xs flex gap-1 items-center'>{formattedTime}</div>
+        
+        <div className='flex chat-footer opacity-50 text-xs gap-1 items-center'>{formattedTime}</div>
     </div>
   )
 }

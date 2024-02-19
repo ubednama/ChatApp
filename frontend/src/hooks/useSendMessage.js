@@ -20,6 +20,12 @@ const useSendMessage = () => {
             const data = await res.json()
             if(data.error) throw new Error(data.error);
 
+
+            //for getting last message
+            // if(receiverSocketId) {
+            //     io.to(receiverSocketId).emit("newMessage", newMessage);
+            // }
+
             setMessages([...messages, data]);
         } catch(error) {
             console.log("error at useSentMessage sendMessage hook")
