@@ -11,13 +11,13 @@ import connectToMongoDB from "./db/connectToMongoDB.js";
 
 import { app, server } from "./socket/socket.js";
 
+dotenv.config();
 
 // const app = express();           -> not needed when using socket
 const PORT = process.env.PORT || 5000;
 
 const __dirname = path.resolve();
 
-dotenv.config();
 
 //middleware
 app.use(express.json());                        //to parse incoming req with JSON payloads(from req.body)
