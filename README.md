@@ -12,9 +12,9 @@
 
 ##
 ### Check App [here](https://chat-app-uwfk.onrender.com/)
-Demo Credentials
-Username: daisydoe
-password: Daisydoe@8
+#### Demo Credentials
+**Username**: `daisydoe`  
+**Password**: `Daisydoe@8`
 ##
 
 ## Some Features:
