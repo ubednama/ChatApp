@@ -1,4 +1,4 @@
-# MERN Stack Project: Build and Deploy a Real-Time Chat App | JWT, Socket.io
+# Real-Time Chat App | Socket.io
 
 ![Demo App](https://github.com/ubednama/chat-app/assets/61332446/473c740f-fe2a-4072-bd17-4923b55454cf)
 <br>
@@ -12,6 +12,9 @@
 
 ##
 ### Check App [here](https://chat-app-uwfk.onrender.com/)
+#### Demo Credentials
+**Username**: `daisydoe`  
+**Password**: `Daisydoe@8`
 ##
 
 ## Some Features:
