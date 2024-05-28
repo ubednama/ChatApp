@@ -1,16 +1,17 @@
 import useConversation from '../../zustand/useConversation'
 import { useSocketContext } from '../../context/SocketContext';
-// import useGetMessages from '../../hooks/useGetMessages';
+import { extractTime } from '../../utils/extractTIme';
 
-const Conversation = ({conversation, lastIdx, emoji}) => {
-  
-  // const { messages } = useGetMessages();
+const Conversation = ({ conversation, lastIdx, emoji, message, messageTimeStamp }) => {
 
-  const {selectedConversation, setSelectedConversation} = useConversation();
+  const { selectedConversation, setSelectedConversation } = useConversation();
+
+  messageTimeStamp = extractTime(messageTimeStamp)
 
   const isSelected = selectedConversation?._id === conversation._id;
-  const {onlineUsers} = useSocketContext();
-  const isOnline = onlineUsers.includes(conversation._id)
+  const { onlineUsers } = useSocketContext();
+  const isOnline = onlineUsers.includes(conversation._id);
+
   return (
     <>
       <div
@@ -21,10 +22,7 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
       >
         <div className={`avatar ${isOnline ? "online" : ""}`}>
           <div className="w-12 rounded-full">
-            <img
-              src={conversation?.profilePic}
-              alt="user"
-            />
+            <img src={conversation?.profilePic} alt="user" />
           </div>
         </div>
         <div className="flex flex-col flex-1">
@@ -33,7 +31,10 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
               <p className="font-bold text-gray-200">
                 {conversation?.fullName}
               </p>
-              {/* <p className='text-sm'>newMessage</p> */}
+              <div>
+                <span className="text-sm">{message}</span>
+                <span className="text-xs">{messageTimeStamp}</span>
+              </div>
             </div>
             <span className="text-xl">{emoji}</span>
           </div>
@@ -42,7 +43,7 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
       {!lastIdx && <div className="divider my-0 py-0 h-1" />}
     </>
   );
-}
+};
 
 export default Conversation
 

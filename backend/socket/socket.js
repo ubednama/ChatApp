@@ -7,7 +7,7 @@ const app = express();
 const server = http.createServer(app);
 const io = new Server(server, {
 	cors: {
-		origin: ["http://localhost:3000"],
+		origin: [process.env.ORIGIN_URL],
 		methods: ["GET", "POST"],
 	},
 });
@@ -21,8 +21,8 @@ export const getReceiverSocketId = (receiverId) => {
 const userSocketMap = {}; // {userId: socketId}
 
 io.on("connection", (socket) => {
-	console.log("a user connected", socket.id);
-
+	console.log("socket connection established")
+	
 	const userId = socket.handshake.query.userId;
 	if (userId != "undefined") userSocketMap[userId] = socket.id;
 
