@@ -21,6 +21,17 @@ const messageSchema = new mongoose.Schema({
     }
 },{timestamps: true});                      //createdAt, updatedAt
 
+// messageSchema.post('remove', async function (doc) {
+//     try {
+//         await mongoose.model('Conversation').updateMany(
+//             { messages: doc._id },
+//             { $pull: { messages: doc._id } }
+//         );
+//         console.log("Message reference removed from conversations.");
+//     } catch (error) {
+//         console.error("Error removing message reference from conversations:", error);
+//     }
+// });
 
 const Message = mongoose.model("Message", messageSchema);
 

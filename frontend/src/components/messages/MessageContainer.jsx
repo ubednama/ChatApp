@@ -1,5 +1,5 @@
 import { useEffect } from 'react'
-import { GiHamburgerMenu } from "react-icons/gi";
+// import { GiHamburgerMenu } from "react-icons/gi";
 import Messages from './Messages'
 import MessageInput from './MessageInput'
 import {TiMessages} from 'react-icons/ti';
@@ -8,6 +8,8 @@ import { useAuthContext } from '../../context/AuthContext';
 
 const MessageContainer = () => {
   const { selectedConversation, setSelectedConversation } = useConversation();
+
+  // const deletedMessage = await Message.findByIdAndDelete(messageId);
 
   useEffect(() => {
     return () => setSelectedConversation(null);
@@ -20,7 +22,7 @@ const MessageContainer = () => {
       ) : (
         <>
           <div className="flex bg-slate-500 px-4 py-2 mb-2 items-center gap-2">
-            <GiHamburgerMenu />
+            {/* <GiHamburgerMenu /> */}
             <img src={selectedConversation.profilePic} className="h-8" />
             <span className="text-gray-900 font-bold">
               {selectedConversation.fullName}
@@ -42,7 +44,7 @@ const NoChatSelected = () => {
   return (
     <>
       <div className="flex bg-slate-500 px-4 py-2 mb-2 items-center gap-2">
-        <GiHamburgerMenu />
+        {/* <GiHamburgerMenu /> */}
         <img
           src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-chat-interface-kiranshastry-lineal-color-kiranshastry-1.png"
           alt="logo"

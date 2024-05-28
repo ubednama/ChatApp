@@ -6,6 +6,7 @@ import cookieParser from "cookie-parser";       //for verifying cookies
 import authRoutes from "./routes/auth.routes.js";
 import messageRoutes from "./routes/message.routes.js";
 import userRoutes from "./routes/user.routes.js";
+import checkRoutes from "./routes/api.routes.js";
 
 import connectToMongoDB from "./db/connectToMongoDB.js";
 
@@ -27,6 +28,7 @@ app.use(cookieParser());
 app.use("/api/auth", authRoutes)
 app.use("/api/messages", messageRoutes)
 app.use("/api/users", userRoutes)
+app.use("/api", checkRoutes)
 
 
     //used to serve static file

@@ -18,14 +18,24 @@ const userSchema = new mongoose.Schema({
     gender: {
         type: String,
         required: true,
-        enum: ["male", "female"]                //used for options which have certain predefined value
+        enum: ["male", "female"]
     },
     profilePic: {
         type: String,
         default: "",
     },
-},{timestamps:true});               //createdAt, updateAt => Member since <createdAt>
+},{timestamps:true});
 
+
+// userSchema.post('remove', async function (doc) {
+//     try {
+//         await mongoose.model('Conversation').deleteMany({ participants: doc._id });
+
+//         await mongoose.model('Message').deleteMany({ $or: [{ senderId: doc._id }, { receiverId: doc._id }] });
+//     } catch (error) {
+//         console.error(error);
+//     }
+// });
 
 //use here singular form, mongoose will consider it as plural
 const User = mongoose.model("User", userSchema);

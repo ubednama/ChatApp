@@ -11,9 +11,7 @@ export const getUsersForSidebar = async (req, res) => {
 		const userIds = conversations.flatMap(conversation => conversation.participants);
 		const uniqueUserIds = Array.from(new Set(userIds));
 
-		const filteredUsers = await User.find({ _id: { $in: uniqueUserIds, $ne: loggedInUserId } }).select("-password");      //not equal to loggedInUserId
-
-        // res.status(200).json(filteredUsers);
+		const filteredUsers = await User.find({ _id: { $in: uniqueUserIds, $ne: loggedInUserId } }).select("-password");
 
 
 		const usersWithDetails = await Promise.all(filteredUsers.map(async (user) => {

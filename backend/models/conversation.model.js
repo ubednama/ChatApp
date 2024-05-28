@@ -13,6 +13,17 @@ const conversationSchema = new mongoose.Schema({
 },{timestamps:true});
 
 
+// conversationSchema.post('remove', async function (doc) {
+//     try {
+//         console.log("Conversation removed, executing post remove hook...");
+//         await mongoose.model('Message').deleteMany({ _id: { $in: doc.messages } });
+//         console.log("Messages referenced in the conversation removed.");
+//     } catch (error) {
+//         console.error("Failed to remove conversation",error);
+//     }
+// });
+
+
 const Conversation = mongoose.model("Conversation", conversationSchema);
 
 export default Conversation;

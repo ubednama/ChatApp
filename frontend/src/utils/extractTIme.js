@@ -36,7 +36,9 @@ export const formatTime = (dateString) => {
     const hoursDifference = Math.floor(minutesDifference / 60);
     const daysDifference = Math.floor(hoursDifference / 24);
 
-    if (minutesDifference < 60) {
+    if (minutesDifference <= 1) {
+        return 'just now';
+    } else if (1 < minutesDifference < 60) {
         return `${minutesDifference} min ago`;
     } else if (hoursDifference < 24) {
         const formattedTime = publishedDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
@@ -59,7 +61,23 @@ export const formatTime = (dateString) => {
 export const formatTimeInterval = (start, end) => {
     const startDate = new Date(start);
     const endDate = new Date(end);
+
+    const msInDay = 1000 * 60 * 60 * 24;
+    const msInWeek = msInDay * 7;
+    const msInYear = msInDay * 365;
+
     const timeDifference = endDate - startDate;
-    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
-    return `${daysDifference} days later`;
+    const daysDifference = Math.floor(timeDifference / msInDay);
+
+    if (daysDifference === 0) {
+        return "Today";
+    } else if (daysDifference === 1) {
+        return "Yesterday";
+    } else if (timeDifference < msInWeek) {
+        return startDate.toLocaleDateString("en-US", { weekday: "long" });
+    } else if (timeDifference < msInYear) {
+        return startDate.toLocaleDateString("en-US", { month: "short", day: "numeric" });
+    } else {
+        return startDate.toLocaleDateString("en-US", { year: "numeric", month: "short", day: "numeric" });
+    }
 };
