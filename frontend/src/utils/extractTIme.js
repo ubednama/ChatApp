@@ -25,3 +25,33 @@ export function extractTime(dateString) {
 function padZero(number) {
     return number.toString().padStart(2, "0");
 }
+
+//2024-02-12T22:18:17.114Z
+
+export const formatTime = (dateString) => {
+    const publishedDate = new Date(dateString);
+    const currentDate = new Date();
+    const timeDifference = currentDate.getTime() - publishedDate.getTime();
+    const minutesDifference = Math.floor(timeDifference / (1000 * 60));
+    const hoursDifference = Math.floor(minutesDifference / 60);
+    const daysDifference = Math.floor(hoursDifference / 24);
+
+    if (minutesDifference < 60) {
+        return `${minutesDifference} min ago`;
+    } else if (hoursDifference < 24) {
+        const formattedTime = publishedDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
+        return formattedTime;
+    } else if (hoursDifference < 48) {
+        return 'Yesterday';
+    } else if (daysDifference < 7) {
+        const weekdays = ['Sun', 'Mon', 'Tue', 'Wed', 'Thu', 'Fri', 'Sat'];
+        return weekdays[publishedDate.getDay()];
+    } else if (daysDifference < 365) {
+        const months = ['Jan', 'Feb', 'Mar', 'Apr', 'May', 'Jun', 'Jul', 'Aug', 'Sep', 'Oct', 'Nov', 'Dec'];
+        return `${publishedDate.getDate()} ${months[publishedDate.getMonth()]}`;
+    } else {
+        const month = publishedDate.getMonth() + 1;
+        const year = publishedDate.getFullYear();
+        return `${month}/${publishedDate.getDate()}/${year}`;
+    }
+};

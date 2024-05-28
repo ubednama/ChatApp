@@ -1,12 +1,17 @@
-import useConversation from '../../zustand/useConversation'
-import { useSocketContext } from '../../context/SocketContext';
-import { extractTime } from '../../utils/extractTIme';
+import useConversation from "../../zustand/useConversation";
+import { useSocketContext } from "../../context/SocketContext";
+import { formatTime } from "../../utils/extractTIme";
 
-const Conversation = ({ conversation, lastIdx, emoji, message, messageTimeStamp }) => {
-
+const Conversation = ({
+  conversation,
+  lastIdx,
+  emoji,
+  message,
+  messageTimeStamp,
+}) => {
   const { selectedConversation, setSelectedConversation } = useConversation();
 
-  messageTimeStamp = extractTime(messageTimeStamp)
+  messageTimeStamp = formatTime(messageTimeStamp);
 
   const isSelected = selectedConversation?._id === conversation._id;
   const { onlineUsers } = useSocketContext();
@@ -25,18 +30,24 @@ const Conversation = ({ conversation, lastIdx, emoji, message, messageTimeStamp 
             <img src={conversation?.profilePic} alt="user" />
           </div>
         </div>
-        <div className="flex flex-col flex-1">
-          <div className="flex gap-3 justify-between">
-            <div>
-              <p className="font-bold text-gray-200">
-                {conversation?.fullName}
-              </p>
-              <div>
-                <span className="text-sm">{message}</span>
-                <span className="text-xs">{messageTimeStamp}</span>
+        <div className="flex flex-col flex-1 overflow-hidden w-full">
+          <div className="flex gap-3 justify-between w-full">
+            <div className="w-full">
+              <div className="flex justify-between w-full ">
+                <p className="font-bold text-gray-200">
+                  {conversation?.fullName}
+                </p>
+                <span className="text-xl">{emoji}</span>
+              </div>
+              <div className="w-full flex justify-between items-center gap-1 overflow-hidden">
+                <div className="text-sm flex-shrink overflow-hidden whitespace-nowrap truncate">
+                  {message}
+                </div>
+                <div className="text-xs whitespace-nowrap w-fit">
+                  {messageTimeStamp}
+                </div>
               </div>
             </div>
-            <span className="text-xl">{emoji}</span>
           </div>
         </div>
       </div>
@@ -45,10 +56,7 @@ const Conversation = ({ conversation, lastIdx, emoji, message, messageTimeStamp 
   );
 };
 
-export default Conversation
-
-
-
+export default Conversation;
 
 // Started code for CONVERSATION
 // import React from 'react'
