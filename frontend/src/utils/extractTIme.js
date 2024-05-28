@@ -55,3 +55,11 @@ export const formatTime = (dateString) => {
         return `${month}/${publishedDate.getDate()}/${year}`;
     }
 };
+
+export const formatTimeInterval = (start, end) => {
+    const startDate = new Date(start);
+    const endDate = new Date(end);
+    const timeDifference = endDate - startDate;
+    const daysDifference = Math.floor(timeDifference / (1000 * 60 * 60 * 24));
+    return `${daysDifference} days later`;
+};

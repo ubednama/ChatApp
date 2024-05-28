@@ -6,8 +6,6 @@ const Conversations = ({ chats , globalSearch, search }) => {
   
   chats = sortChats(chats);
 
-  console.log(chats)
-
   return (
     <div className="py-2 flex flex-col overflow-auto">
       {search && globalSearch.length > 0 && (

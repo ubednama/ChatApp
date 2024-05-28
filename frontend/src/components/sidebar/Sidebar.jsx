@@ -22,10 +22,14 @@ const Sidebar = () => {
 
   return (
     <>
-      <div className=" rounded-lg p-4 flex flex-col overflow-auto w-1/4 min-w-64">
+      <div className="rounded-lg py-4 p-2 sm:flex flex-col overflow-auto w-[30%] min-w-72 max-w-80">
         <SearchInput onSearch={handleSearch} />
         <div className="divider px-3"></div>
-        <Conversations chats={chats} globalSearch={globalSearch} search={search} />
+        <Conversations
+          chats={chats}
+          globalSearch={globalSearch}
+          search={search}
+        />
         {loading ? (
           <span className="loading loading-spinner mx-auto"></span>
         ) : null}

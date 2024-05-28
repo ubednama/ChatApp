@@ -5,6 +5,7 @@ import react from '@vitejs/plugin-react'
 export default defineConfig({
   plugins: [react()],
   server:{
+    host: '0.0.0.0',
     port:3000,
     proxy: {        //this is only for development, when deployed we dont need it
       "/api":{
