@@ -1,5 +1,3 @@
-import React, { useState } from 'react'
-import {Box, Flex, Text} from '@chakra-ui/react'
 import { useAuthContext } from '../../context/AuthContext'
 import useConversation from '../../zustand/useConversation';
 import { extractTime } from '../../utils/extractTIme';
@@ -23,12 +21,6 @@ const Message = ({message}) => {
             </div>
         </div>
         <div className={` max-w-3/4 chat-bubble text-white ${bubbleBgColor} ${shakeClass} `}>
-        {/* <p className='overflow-wrap break-words'>{`${message.message}`}</p>
-          {chatClassName === 'chat-end' && (
-            <div className="flex items-end">
-              <BsCheck2All size={16} />
-            </div>
-          )} */}
             <p className=' overflow-wrap break-words '>{`${message.message}`} {chatClassName === 'chat-end' ? <BsCheck2All size={16} className="absolute right-2 bottom-0.5"/> : ''}</p>
         </div>
         

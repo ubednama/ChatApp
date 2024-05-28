@@ -1,8 +1,11 @@
-import React from 'react'
 import useConversation from '../../zustand/useConversation'
 import { useSocketContext } from '../../context/SocketContext';
+// import useGetMessages from '../../hooks/useGetMessages';
 
 const Conversation = ({conversation, lastIdx, emoji}) => {
+  
+  // const { messages } = useGetMessages();
+
   const {selectedConversation, setSelectedConversation} = useConversation();
 
   const isSelected = selectedConversation?._id === conversation._id;
@@ -10,33 +13,35 @@ const Conversation = ({conversation, lastIdx, emoji}) => {
   const isOnline = onlineUsers.includes(conversation._id)
   return (
     <>
-        <div className={`flex gap-2 items-center hover:bg-sky-700 rounded p-2 py-1 cursor-pointer ${isSelected ? "bg-sky-700": "" }`}
-          onClick={() => setSelectedConversation(conversation)}>
-            {/* avatar */}
-            <div className={`avatar ${isOnline ? "online" : ""}`}>
-                {/* later we will make above online offline dynamic */}
-                <div className='w-12 rounded-full'>
-                    <img src={conversation.profilePic}
-                    // "https://cdn0.iconfinder.com/data/icons/communication-line-10/24/account_profile_user_contact_person_avatar_placeholder-512.png" 
-                    alt="user" />
-                    {/* later we will change URL */}
-                </div>
-
-            </div>
-            {/* name and icon */}
-            <div className='flex flex-col flex-1'>
-                <div className='flex gap-3 justify-between'>
-                    <div>
-                      <p className='font-bold text-gray-200'>{conversation.fullName}</p>
-                      {/* <p className='text-sm'>newMessage</p> */}
-                    </div>
-                    <span className='text-xl'>{emoji}</span>
-                </div>
-            </div>
+      <div
+        className={`flex gap-2 items-center hover:bg-sky-700 rounded p-2 py-1 cursor-pointer ${
+          isSelected ? "bg-sky-700" : ""
+        }`}
+        onClick={() => setSelectedConversation(conversation)}
+      >
+        <div className={`avatar ${isOnline ? "online" : ""}`}>
+          <div className="w-12 rounded-full">
+            <img
+              src={conversation?.profilePic}
+              alt="user"
+            />
+          </div>
         </div>
-        {!lastIdx && <div className='divider my-0 py-0 h-1' />}
+        <div className="flex flex-col flex-1">
+          <div className="flex gap-3 justify-between">
+            <div>
+              <p className="font-bold text-gray-200">
+                {conversation?.fullName}
+              </p>
+              {/* <p className='text-sm'>newMessage</p> */}
+            </div>
+            <span className="text-xl">{emoji}</span>
+          </div>
+        </div>
+      </div>
+      {!lastIdx && <div className="divider my-0 py-0 h-1" />}
     </>
-  )
+  );
 }
 
 export default Conversation

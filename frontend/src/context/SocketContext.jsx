@@ -17,11 +17,10 @@ export const SocketContextProvider = ({ children }) => {
 
 	useEffect(() => {
 		if (authUser) {
-			const socket = io("http://localhost:5000", {
-			// const socket = io("https://chat-app-uwfk.onrender.com/", {
-				query: {
-					userId: authUser._id,
-				},
+			const socket = io(import.meta.env.VITE_BASE_URL, {
+        // const socket = io("https://chat-app-uwfk.onrender.com/", {
+			query: {
+				userId: authUser._id},
 			});
 
 			setSocket(socket);
