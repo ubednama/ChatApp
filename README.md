@@ -1,5 +1,8 @@
 # Real-Time Chat App | Socket.io
 
+### Tech stack
+MERN + Socket.io + TailwindCSS + Daisy UI
+
 ![Demo App](https://github.com/ubednama/chat-app/assets/61332446/473c740f-fe2a-4072-bd17-4923b55454cf)
 <br>
 <p>
@@ -18,14 +21,13 @@
 ##
 
 ## Some Features:
-
--   Tech stack: MERN + Socket.io + TailwindCSS + Daisy UI
--   Authentication && Authorization with JWT
+-   Authentication & Authorization with JWT
 -   Real-time messaging with Socket.io
 -   Online user status (Socket.io and React Context)
 -   Global state management with Zustand
 -   Error handling both on the server and on the client
 -   Responsive UI
+-   Pretty much everything that IM has
 -   And much more!
 
 ### Setup .env file
