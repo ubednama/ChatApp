@@ -39,7 +39,7 @@ export const formatTime = (dateString) => {
     if (minutesDifference <= 1) {
         return 'just now';
     } else if (minutesDifference < 60) {
-        return `${minutesDifference} min ago`;
+        return `${minutesDifference} ${minutesDifference === 1 ? 'min' : 'mins'} ago`;
     } else if (hoursDifference < 24) {
         const formattedTime = publishedDate.toLocaleTimeString([], { hour: 'numeric', minute: '2-digit', hour12: true });
         return formattedTime;
