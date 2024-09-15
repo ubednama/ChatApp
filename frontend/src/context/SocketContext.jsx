@@ -16,30 +16,31 @@ export const SocketContextProvider = ({ children }) => {
 	const { authUser } = useAuthContext();
 
 	useEffect(() => {
+		let socketInstance = null;
 		if (authUser) {
-			const socket = io(import.meta.env.VITE_BASE_URL, {
-        // const socket = io("https://chat-app-uwfk.onrender.com/", {
-			query: {
-				userId: authUser._id},
+			// const socketInstance = io("https://chat-app-uwfk.onrender.com/", {
+			const socketInstance = io(import.meta.env.VITE_BASE_URL, {
+				query: {
+				userId: authUser._id,
+				},
 			});
 
-			setSocket(socket);
+			setSocket(socketInstance);
 
 
             //checking online
             // socket.on() is used to listen to the events, can be used both on client and server side
-            socket.on("getOnlineUsers", (users) => {
-				setOnlineUsers(users);
-			});
-
-			return () => socket.close();
-		} else {
-			if (socket) {
-				socket.close();
-				setSocket(null);
-			}
+            socketInstance.on("getOnlineUsers", (users) => {
+              setOnlineUsers(users);
+            });
 		}
-	}, [authUser, socket]);
+
+		return () => {
+			if (socketInstance) {
+				socketInstance.close();
+			}
+		};
+	}, [authUser]);
 
 	return <SocketContext.Provider value={{ socket, onlineUsers }}>{children}</SocketContext.Provider>;
 };
