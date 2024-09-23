@@ -9,7 +9,10 @@ export default defineConfig({
     port:3000,
     proxy: {        //this is only for development, when deployed we dont need it
       "/api":{
-        target:"http://localhost:5000",
+        // target:"http://localhost:5000",
+        target: "https://chat-app-uwfk.onrender.com",
+        changeOrigin: true,
+        secure: false,
       }
     }
   }

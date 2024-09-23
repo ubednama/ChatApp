@@ -21,7 +21,7 @@ const MessageContainer = () => {
         <NoChatSelected />
       ) : (
         <>
-          <div className="flex bg-slate-500 px-4 py-2 mb-2 items-center gap-2">
+          <div className="flex bg-slate-600 px-4 py-2 mb-2 items-center gap-2">
             {/* <GiHamburgerMenu /> */}
             <img src={selectedConversation.profilePic} className="h-8" />
             <span className="text-gray-900 font-bold">
@@ -43,7 +43,7 @@ const NoChatSelected = () => {
   const { authUser } = useAuthContext();
   return (
     <>
-      <div className="flex bg-slate-500 px-4 py-2 mb-2 items-center gap-2">
+      <div className="flex bg-slate-600 px-4 py-2 mb-2 items-center gap-2">
         {/* <GiHamburgerMenu /> */}
         <img
           src="https://img.icons8.com/external-kiranshastry-lineal-color-kiranshastry/64/external-chat-interface-kiranshastry-lineal-color-kiranshastry-1.png"

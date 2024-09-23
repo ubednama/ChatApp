@@ -5,9 +5,8 @@ import useGetConversations from '../../hooks/useGetConversations';
 import { useCallback, useState } from 'react';
 
 const Sidebar = () => {
-
   const [globalSearch, setGlobalSearch] = useState([]);
-  const [search, setSearch] = useState(false)
+  const [search, setSearch] = useState(false);
   const { loading, conversations } = useGetConversations();
   const [chats, setChats] = useState(conversations);
 
@@ -15,27 +14,32 @@ const Sidebar = () => {
     (query, globalSearch, chats) => {
       setGlobalSearch(query ? globalSearch : []);
       setChats(query ? chats : conversations);
-      setSearch(query ? true : false)
+      setSearch(query ? true : false);
     },
     [conversations]
   );
 
   return (
-    <>
-      <div className="rounded-lg py-4 p-2 sm:flex flex-col overflow-auto w-[30%] min-w-72 max-w-80">
+    <div className="w-80 flex flex-col border-r border-gray-200">
+      <div className="p-4">
         <SearchInput onSearch={handleSearch} />
-        <div className="divider px-3"></div>
+      </div>
+      <div className="flex-1 overflow-y-auto">
         <Conversations
           chats={chats}
           globalSearch={globalSearch}
           search={search}
         />
-        {loading ? (
-          <span className="loading loading-spinner mx-auto"></span>
-        ) : null}
+      </div>
+      {loading && (
+        <div className="flex justify-center p-4">
+          <div className="animate-spin rounded-full h-8 w-8 border-b-2 border-gray-900" />
+        </div>
+      )}
+      <div className="p-4 border-t border-gray-600">
         <LogoutButton />
       </div>
-    </>
+    </div>
   );
 }
 

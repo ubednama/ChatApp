@@ -52,7 +52,7 @@ const SearchInput = ({ onSearch }) => {
           <input
             type="text"
             placeholder="Search.."
-            className="flex input input-bordered rounded-full"
+            className="flex input input-bordered rounded-xl"
             value={search}
             onChange={(e) => {setSearch(e.target.value); setClearButton('absolute')}}
           />
@@ -63,7 +63,7 @@ const SearchInput = ({ onSearch }) => {
             <MdClear />
           </span>
         </div>
-        <button type="submit" className="btn btn-circle bg-sky-500 text-white">
+        <button type="submit" className="btn btn-circle bg-sky-700 text-white">
           <IoSearchSharp className="size-6 outline-none" />
         </button>
       </form>
